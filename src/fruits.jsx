@@ -1,15 +1,19 @@
 
-export default function  Fruits({name,color,qt})
+export default function  Fruits(fruit)
 {
+    const {name,color,qt,fresh,pricePerPiece} ={...fruit}; //{ }
     return (
         <div>
             <h1>Fruites</h1>
 
-            <h3>Fruit Name: {name}</h3>
-            <h3>Color: {color} </h3>
-            <h3><b>Quantity: </b>  {qt}</h3>
-
+            <p>Fruit fresh: {name}</p>
+            <p>Color: {color} </p>
+            <p><b>Quantity: </b>  {qt +5}</p>
+            <p>Fresh: {fresh ? "fresh" :"Not fresh"}</p>
+            <p>price: {pricePerPiece}</p>
         </div>
         )
 }
+
+
 
