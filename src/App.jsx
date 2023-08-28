@@ -85,19 +85,27 @@ function App() {
     }
 ]);
   
+  //Add task
+  const addTask = (task)=>{
+    // we have to add id manually.
+    const id = Math.floor(Math.random() * 1000 )+1;
+    const newTask = {id, ...task};
+    setTask([...tasks,newTask])
+    console.log(task)
+  }
+
+
   // Delete Task
   const deleteTask = (id)=>{
-
-    //we use filter() of array here to show all the tasks other than the task having id -passed in the function.
+            //we use filter() of array here to show all the tasks other than the task having id -passed in the function.
     setTask(tasks.filter((task)=> task.id !== id ) );
 
-    // console.log("delete", id);
   }
 
   // reminderForTask
   const reminderForTask= (id)=>{
     setTask(tasks.map((task)=> 
-    task.id === id ?  {...task,reminder:!task.reminder} : task)
+    task.id === id ?  {...task,reminder: !task.reminder} : task)
     )
 
     // ----mine
@@ -114,14 +122,13 @@ function App() {
       <div className='container'>
         <h1>Task Tracker <Button  color="blue" text='Add Task' /></h1>
         
-        <AddTask />
+        <AddTask onAdd={addTask} />
 
         <br />
         {tasks.length > 0? <Tasks tasks={tasks} onDelete= {deleteTask}  setReminder={reminderForTask}/> : "No Tasks to show." }
         <br/>
 
         {/* now we have to set reminder for the task if double cllicked. */}
-
         
       </div>  
     </>
