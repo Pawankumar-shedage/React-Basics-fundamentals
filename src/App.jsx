@@ -112,7 +112,7 @@ function App() {
   return (
     <>
       <div className='container'>
-        <h1>Task Tracker <Button  color="black" text='Add' /></h1>
+        <h1>Task Tracker <Button  color="blue" text='Add Task' /></h1>
         
         <AddTask />
 
