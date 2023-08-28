@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 export const Button= ({click1,color,text})=>{
     return(
-        <button className="btn btn-primary" onClick={click1}  style={{backgroundColor:color, margin:'10px' }} > 
+        <button className="btn btn-primary" onClick={click1}  style={{backgroundColor:color, margin:'10px',outline:'none' }} > 
         {text}
         </button>
     )
