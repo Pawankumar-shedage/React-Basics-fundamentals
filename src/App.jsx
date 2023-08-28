@@ -122,7 +122,7 @@ function App() {
 
         {/* now we have to set reminder for the task if double cllicked. */}
 
-        {/* <Button /> */}
+        
       </div>  
     </>
   )
