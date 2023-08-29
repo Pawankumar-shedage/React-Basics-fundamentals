@@ -13,6 +13,7 @@ const Task = ({task, onDelete,setReminder}) => {
         </h3>
         <p>{task.day}</p>
 
+      {/* see local storage and session storage js for retaining info on web  page. */}
         
 
     </div>

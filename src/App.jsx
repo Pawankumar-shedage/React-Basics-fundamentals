@@ -2,12 +2,13 @@
 // import { useState } from 'react'
 
 import './App.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // import FruitCart from './FruitCart';
 // import Fruits from './fruits';
 import { Button } from './Components/button';
 import  Tasks  from './Components/tasksComp';
 import AddTask from './Components/AddTask';
+import Header from './Components/classComp';
 
 function App() {
   
@@ -102,7 +103,7 @@ function App() {
 
   }
 
-  // reminderForTask
+ 
   const reminderForTask= (id)=>{
     setTask(tasks.map((task)=> 
     task.id === id ?  {...task,reminder: !task.reminder} : task)
@@ -116,17 +117,41 @@ function App() {
   }
 
 
+  const [count,setCount] = useState(0);
+  //useEffect hook is used for side Effects! of the page. Some examples of side effects are: fetching data, directly updating the DOM, and timers.
+  const [cal,setCal] = useState(0);
+  useEffect(()=>{
+        setCal(()=>
+          count *2
+      );
+
+  },[count]);  // useEffect is dependent on [count] (count variable.)
+
   // ------------return ------
   return (
     <>
       <div className='container'>
-        <h1>Task Tracker <Button  color="blue" text='Add Task' /></h1>
+
+
+        {/* temp useEffect */}
+        <h1 style={{textAlign:'center', color:'blue'}}>UseEffect EG</h1>
+        <p>rendered this comp {count} times.</p>
+        <p>Cal = {cal}</p>
+
+        <Button color={'green'} click1={()=>setCount(count+1)} text='CLick'> </Button>
+
+        
+
+
+        {/* ------------------------------- */}
+
+        {/* <h1>Task Tracker <Button  color="blue" text='Add Task' /></h1>
         
         <AddTask onAdd={addTask} />
 
         <br />
         {tasks.length > 0? <Tasks tasks={tasks} onDelete= {deleteTask}  setReminder={reminderForTask}/> : "No Tasks to show." }
-        <br/>
+        <br/> */}
 
         {/* now we have to set reminder for the task if double cllicked. */}
         
