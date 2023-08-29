@@ -9,6 +9,8 @@ import { Button } from './Components/button';
 import  Tasks  from './Components/tasksComp';
 import AddTask from './Components/AddTask';
 import Header from './Components/classComp';
+import Task from './task';
+import { Goal, PracticeComp } from './Components/practiceComponent';
 
 function App() {
   
@@ -127,31 +129,40 @@ function App() {
 
   },[count]);  // useEffect is dependent on [count] (count variable.)
 
+  const cars = ['Ford'];
+
   // ------------return ------
   return (
     <>
       <div className='container'>
 
 
+
+        {/* Practice Component! */}
+        {/* <h1 id='demo' >HWW</h1>
+        <PracticeComp cars={cars}/>
+        <Goal isGoal = {true} /> */}
+
+
         {/* temp useEffect */}
-        <h1 style={{textAlign:'center', color:'blue'}}>UseEffect EG</h1>
+        {/* <h1 style={{textAlign:'center', color:'blue'}}>UseEffect EG</h1>
         <p>rendered this comp {count} times.</p>
         <p>Cal = {cal}</p>
 
-        <Button color={'green'} click1={()=>setCount(count+1)} text='CLick'> </Button>
+        <Button color={'green'} click1={()=>setCount(count+1)} text='CLick'> </Button> */}
 
         
 
 
         {/* ------------------------------- */}
 
-        {/* <h1>Task Tracker <Button  color="blue" text='Add Task' /></h1>
+        <h1>Task Tracker <Button  color="blue" text='Add Task' /></h1>
         
         <AddTask onAdd={addTask} />
 
         <br />
         {tasks.length > 0? <Tasks tasks={tasks} onDelete= {deleteTask}  setReminder={reminderForTask}/> : "No Tasks to show." }
-        <br/> */}
+        <br/>
 
         {/* now we have to set reminder for the task if double cllicked. */}
         

@@ -1,6 +1,6 @@
 
 // using icons as React components.
-import {FaTimesCircle}  from "react-icons/fa"
+import {FaTimes, FaTimesCircle,FaBeer,FaAcquisitionsIncorporated}  from "react-icons/fa"
 import PropTypes from 'prop-types';
 
 const Task = ({task, onDelete,setReminder}) => {
