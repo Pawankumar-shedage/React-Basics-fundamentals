@@ -9,6 +9,7 @@ export const PracticeComp = (props) => {
     <div>
         <h1 id="demo" style={{textAlign:'center'}}>PracticeComp</h1>
 
+            {/* short hand of using ternary op:{ exp1 (if true)} && {then do exp 2} */}
         <h2> {cars.length > 0 && 
                 <p>You have {cars.length} cars in your Garage!</p>
             } 

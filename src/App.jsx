@@ -11,6 +11,7 @@ import AddTask from './Components/AddTask';
 import Header from './Components/classComp';
 import Task from './task';
 import { Goal, PracticeComp } from './Components/practiceComponent';
+import { AppHeader } from './Components/Header';
 
 function App() {
   
@@ -119,25 +120,33 @@ function App() {
   }
 
 
-  const [count,setCount] = useState(0);
-  //useEffect hook is used for side Effects! of the page. Some examples of side effects are: fetching data, directly updating the DOM, and timers.
-  const [cal,setCal] = useState(0);
-  useEffect(()=>{
-        setCal(()=>
-          count *2
-      );
+  const [showAddTask,setShowTask] = useState(true);
 
-  },[count]);  // useEffect is dependent on [count] (count variable.)
 
-  const cars = ['Ford'];
+
 
   // ------------return ------
   return (
     <>
       <div className='container'>
 
+        
+        <AppHeader text={"Task Tracker"} 
+          onAdd={()=>{setShowTask(!showAddTask)}} showAdd={showAddTask}
+        />
+        
+        {showAddTask && <AddTask onAdd={addTask} />}
+
+        <br />
+        {tasks.length > 0 ? 
+          <Tasks tasks={tasks} onDelete= {deleteTask}  
+          setReminder={reminderForTask}/> : "No Tasks to show." }
+        <br/>
 
 
+
+
+        {/* ------------------------------------------------------------- */}
         {/* Practice Component! */}
         {/* <h1 id='demo' >HWW</h1>
         <PracticeComp cars={cars}/>
@@ -156,16 +165,9 @@ function App() {
 
         {/* ------------------------------- */}
 
-        <h1>Task Tracker <Button  color="blue" text='Add Task' /></h1>
-        
-        <AddTask onAdd={addTask} />
-
-        <br />
-        {tasks.length > 0? <Tasks tasks={tasks} onDelete= {deleteTask}  setReminder={reminderForTask}/> : "No Tasks to show." }
-        <br/>
         
 
-        {/* now we have to set reminder for the task if double cllicked. */}
+        
         
       </div>  
     </>

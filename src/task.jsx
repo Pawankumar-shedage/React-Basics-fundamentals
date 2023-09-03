@@ -1,6 +1,6 @@
 
 // using icons as React components.
-import {FaTimes, FaTimesCircle,FaBeer,FaAcquisitionsIncorporated}  from "react-icons/fa"
+import {FaTimes}  from "react-icons/fa"
 import PropTypes from 'prop-types';
 
 const Task = ({task, onDelete,setReminder}) => {
@@ -9,7 +9,7 @@ const Task = ({task, onDelete,setReminder}) => {
         <h3 >
           {task.text }  
           
-          <FaTimesCircle style={{color:"red", cursor:'pointer'}}  onClick={()=>{{onDelete(task.id)}} }  /> 
+          <FaTimes style={{color:"red", cursor:'pointer'}}  onClick={()=>{{onDelete(task.id)}} }  /> 
         </h3>
         <p>{task.day}</p>
 

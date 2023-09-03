@@ -97,3 +97,11 @@ h1{
   border-radius: 5px;
   padding: 5px;
 }
+
+/* ---------header addTask Btn */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  
+}
