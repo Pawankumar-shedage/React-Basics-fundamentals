@@ -163,6 +163,7 @@ function App() {
         <br />
         {tasks.length > 0? <Tasks tasks={tasks} onDelete= {deleteTask}  setReminder={reminderForTask}/> : "No Tasks to show." }
         <br/>
+        
 
         {/* now we have to set reminder for the task if double cllicked. */}
         
