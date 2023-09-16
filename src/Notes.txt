@@ -1,0 +1,4 @@
+
+UseEffect hook
+    Used to perform something/updating  when the page is loaded. Something is updated.
+    Used to handle side-effects.

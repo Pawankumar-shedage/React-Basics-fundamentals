@@ -68,46 +68,76 @@ function App() {
 
 
   // TASKS
-  const [tasks,setTask] = useState([
-    {
-        id: 1,
-        text: "Doctors Appointment",
-        day: "Feb 5th at 2:30pm",
-        reminder: true
-    },
-    {
-        id: 2,
-        text: "Meeting at School",
-        day: "Feb 6th at 1:30pm",
-        reminder: true
-    },
-    {
-        id:3,
-        text: "For the walk",
-        day: "Feb 6th at 1:30pm",
-        reminder: false
-    }
-]);
+  const [tasks,setTask] = useState([]);
   
+  useEffect(()=>{
+    const getTasks = async ()=>{
+      const tasksFromServer  = await fetchTasks()
+      setTask(tasksFromServer)
+    }
+
+    getTasks()
+  }, [])
+
+  //Fetch Tasks.
+  const fetchTasks = async ()=>{
+    const res = await fetch("http://localhost:5000/tasks")
+    const data = await res.json()
+    return data
+  }
+
+  //Fetch Task
+  const fetchTask = async ()=>{
+    const response = await fetch(`http://localhost:5000/tasks/${id}`)
+    const data = await response.json()
+
+    return data
+  }
+
   //Add task
-  const addTask = (task)=>{
+  const addTask = async (task)=>{
+
+    //on server
+    const response = await fetch('http://localhost:5000/tasks', 
+      {
+        method:'POST',
+        headers: {
+          'Content-type' : 'application/json', 
+        },
+        body: JSON.stringify(task)
+      }
+    )
+
+    const data =  await response.json()
+    setTask([...tasks,data])
+    
     // we have to add id manually.
-    const id = Math.floor(Math.random() * 1000 )+1;
-    const newTask = {id, ...task};
-    setTask([...tasks,newTask])
-    console.log(task)
+    // const id = Math.floor(Math.random() * 1000 )+1;
+    // const newTask = {id, ...task};
+    // setTask([...tasks,newTask])
+    // console.log(task)
   }
 
 
   // Delete Task
-  const deleteTask = (id)=>{
-            //we use filter() of array here to show all the tasks other than the task having id -passed in the function.
+  const deleteTask = async (id)=>{
+
+    //deleting from the server.
+    await fetch(`http://localhost:5000/tasks/${id}`,
+      {
+        method:'DELETE',
+      }  
+    )
+
+    //we use filter() of array here to show all the tasks other than the task having id -passed in the function.
     setTask(tasks.filter((task)=> task.id !== id ) );
 
   }
 
- 
-  const reminderForTask= (id)=>{
+  //
+
+  //Toggle Reminder
+  const toggleReminder= (id)=>{
     setTask(tasks.map((task)=> 
     task.id === id ?  {...task,reminder: !task.reminder} : task)
     )
@@ -119,11 +149,7 @@ function App() {
     
   }
 
-
   const [showAddTask,setShowTask] = useState(true);
-
-
-
 
   // ------------return ------
   return (
@@ -131,7 +157,7 @@ function App() {
       <div className='container'>
 
         
-        <AppHeader text={"Task Tracker"} 
+        <AppHeader text="Task Tracker" 
           onAdd={()=>{setShowTask(!showAddTask)}} showAdd={showAddTask}
         />
         
@@ -140,7 +166,7 @@ function App() {
         <br />
         {tasks.length > 0 ? 
           <Tasks tasks={tasks} onDelete= {deleteTask}  
-          setReminder={reminderForTask}/> : "No Tasks to show." }
+          setReminder={toggleReminder}/> : "No Tasks to show." }
         <br/>
 
         

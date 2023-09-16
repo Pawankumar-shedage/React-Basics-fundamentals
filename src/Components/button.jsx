@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types';
+/* eslint-disable react/prop-types */
+// import PropTypes from 'prop-types';
 
 export const Button= ({click1,color,text})=>{
     return(
@@ -9,16 +10,16 @@ export const Button= ({click1,color,text})=>{
 }
 
 // validation for prop used.**
-Button.propTypes = {
-    click1: PropTypes.func,
-    color:PropTypes.string,
-    // text is required.
-    text:PropTypes.string.isRequired 
-}
+// Button.propTypes = {
+//     click1: PropTypes.func,
+//     color:PropTypes.string,
+//     // text is required.
+//     text:PropTypes.string
+// }
 
 // setting default values for the props used in button. if none are provided from parent component
-Button.defaultProps = {
-    color:"#0D6EFD",
-    text:"Click Me"
+// Button.defaultProps = {
+//     color:"#0D6EFD",
+//     text:"Click Me"
 
-}
+// }
