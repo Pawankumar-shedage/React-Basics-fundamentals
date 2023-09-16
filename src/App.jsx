@@ -143,31 +143,6 @@ function App() {
           setReminder={reminderForTask}/> : "No Tasks to show." }
         <br/>
 
-
-
-
-        {/* ------------------------------------------------------------- */}
-        {/* Practice Component! */}
-        {/* <h1 id='demo' >HWW</h1>
-        <PracticeComp cars={cars}/>
-        <Goal isGoal = {true} /> */}
-
-
-        {/* temp useEffect */}
-        {/* <h1 style={{textAlign:'center', color:'blue'}}>UseEffect EG</h1>
-        <p>rendered this comp {count} times.</p>
-        <p>Cal = {cal}</p>
-
-        <Button color={'green'} click1={()=>setCount(count+1)} text='CLick'> </Button> */}
-
-        
-
-
-        {/* ------------------------------- */}
-
-        
-
-        
         
       </div>  
     </>
