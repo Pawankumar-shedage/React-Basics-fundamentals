@@ -138,6 +138,7 @@ function App() {
 
   //Toggle Reminder
   const toggleReminder= async (id)=>{
+
     const taskToToggle = await fetchTask(id)
     const updTask = {...taskToToggle, reminder: !taskToToggle.reminder}
 
@@ -155,7 +156,7 @@ function App() {
     const data = await response.json()
 
     setTask(tasks.map((task)=> 
-    task.id === id ?  {...task,reminder: !data.reminder} : task)
+    task.id === id ?  {...task, reminder: data.reminder} : task)
     )
 
     // ----mine
@@ -165,7 +166,7 @@ function App() {
     
   }
 
-  const [showAddTask,setShowTask] = useState(true);
+  const [showAddTask,setShowTask] = useState(false);
 
   // ------------return ------
   return (

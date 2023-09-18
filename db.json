@@ -1,16 +1,18 @@
 {
   "tasks": [
     {
-      "id": 2,
-      "text": "Meeting at School",
-      "day": "Feb 6th at 1:30pm",
-      "reminder": true
+      "text": "To get statitonary",
+      "day": "Tue ",
+      "time": "10:30",
+      "reminder": true,
+      "id": 1
     },
     {
-      "text": "Doctors Appointment",
-      "day": "Tuesday 6.30 pm",
+      "text": "Create Stratergy",
+      "day": "Today ",
+      "time": "17:31",
       "reminder": false,
-      "id": 3
+      "id": 2
     }
   ]
 }

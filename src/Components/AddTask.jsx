@@ -1,11 +1,13 @@
 
 import PropTypes from 'prop-types'
-import { useState } from "react"
+import {  useState } from "react"
+
 
 const AddTask = ({onAdd}) => {
 
-  const [text, setText] = useState("");
+  const [text, setText] = useState("")
   const [day,setDay] = useState("")
+  const [time,setTime] = useState("")
   const [reminder,setReminder] = useState(false)
   
   const onSubmit =(e)=>
@@ -18,26 +20,53 @@ const AddTask = ({onAdd}) => {
       return;
     }
 
-    onAdd({text,day,reminder});
+    onAdd({text,day,time,reminder});
     setText('')
     setDay('')
+    setTime('')
     setReminder(false);
 
 
   }
+
+  //to change inp type from one state to another
+    // const [inputType, setInputType] = useState('text')
+
+    // const handleFocus = ()=>{
+    //   setInputType('date')
+    // }
+
+
+
   return (
     <>
       <form className="add-form"  onSubmit={onSubmit}>
         <div className="form-control-1">
           <label>Task</label>
-          <input type="text" placeholder="Add Task" spellCheck="false" value={text}  
-              onChange={(e)=> {setText(e.target.value)}}/>
+          <input type="text" className='form-control' placeholder="Add Task" spellCheck="false" value={text}  
+              onChange={(e)=> {setText(e.target.value)}} 
+          />
         </div>
 
         <div className="form-control-1">
-          <label>Day & Time</label>
-          <input type="text" placeholder="Add Day & Time" value={day}
-            onChange={(e)=>{setDay(e.target.value)}} />
+          <label>Day </label>
+          
+          <input 
+            className='form-control' 
+            type="text" 
+            placeholder="Add Day & Date"  
+            value={day}
+            onChange={(e)=>{setDay(e.target.value) }}  
+            required 
+          />
+          
+          <label >Time</label>
+          <input 
+            type="time" 
+            className='form-control'
+            value={time} 
+            onChange={(e) => {setTime(e.target.value) }}
+          />
         </div>
 
         <div className="form-control-1-check">
